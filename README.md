@@ -18,11 +18,12 @@ This is the associated code for Rowan's TPU tutorial. Here are the steps to get 
     ```
 5. For some reason I often need to authenticate once more, so run
     ```
-    gcloud auth application-defaultlogin
+    gcloud auth application-default login
     ```
     (If you are on a remote server, use `gcloud auth application-default login --no-launch-browser`)
 6. Visit [the cloud storage page](https://console.cloud.google.com/storage/browser) and make a cloud storage bucket in the `us-central1` region. I named mine `tpututorial`. We'll also need to fix the permissions on this storage bucket. Grab the project number from the main google cloud console (mine is `335436385550`) and edit the permissions (right hand side). Add 
-    ```service-[PROJECT_NUMBER]@cloud-tpu.iam.gserviceaccount.com
+    ```
+    service-[PROJECT_NUMBER]@cloud-tpu.iam.gserviceaccount.com
     ```
     to both the `Storage Legacy Writer` and `Storage Legacy Reader` groups.
     
