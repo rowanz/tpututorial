@@ -40,7 +40,8 @@ At any time, you can look at the status of your VM and TPUs by going to the [VM 
 There's one more thing you'll need to do. Look at the[VM instance](https://console.cloud.google.com/compute/instances) you created and add your SSH key into `SSH Keys` there. You can get your SSH key by running
 
 `cat ~/.ssh/id_rsa.pub`
-You will also need the External IP on that page. Mine is `104.154.97.121`.
+
+If you don't have an SSH key, use [this tutorial](https://confluence.atlassian.com/bitbucketserver/creating-ssh-keys-776639788.html) You will also need the External IP on that page. Mine is `104.154.97.121`.
 
 ## Let's run BERT on our new TPU!
 
