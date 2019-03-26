@@ -1,5 +1,5 @@
 # tpututorial
-This is the associated code for Rowan's TPU tutorial. Here are the steps to get set up:
+This is the associated code for Rowan's TPU tutorial. This is a limited version of a longer and more detailed set of tutorials, which you can find at [this website](https://cloud.google.com/tpu/docs/tutorials). Here are the steps to get set up:
 
 1. [Download google cloud utilities.](https://cloud.google.com/sdk/install) There are links to an [interactive installer](https://cloud.google.com/sdk/docs/downloads-interactive) for osx/windows, and [apt-get instructions](https://cloud.google.com/sdk/docs/downloads-apt-get) for Ubuntu.
 2. Open a terminal and run ```gcloud init``` (note that if you're following this tutorial on a server that doesn't have a display, you need to run `gcloud init --console-only`) You'll need to sign up with a project. If you're at UW, use the private lab-only account. Otherwise, use the project for your team at AI2.
@@ -37,11 +37,9 @@ This will create a virtual machine, and an associated TPU. We're using one of th
 
 At any time, you can look at the status of your VM and TPUs by going to the [VM instances](https://console.cloud.google.com/compute/instances) or [TPUs](https://console.cloud.google.com/compute/tpus) page.
 
-There's one more thing you'll need to do. Look at the[VM instance](https://console.cloud.google.com/compute/instances) you created and add your SSH key into `SSH Keys` there. You can get your SSH key by running
+There's one more thing you'll need to do. Look at the[VM instance](https://console.cloud.google.com/compute/instances) you created and add your SSH key into `SSH Keys` there. You can get your SSH key by running `cat ~/.ssh/id_rsa.pub`.
 
-`cat ~/.ssh/id_rsa.pub`
-
-If you don't have an SSH key, use [this tutorial](https://confluence.atlassian.com/bitbucketserver/creating-ssh-keys-776639788.html) You will also need the External IP on that page. Mine is `104.154.97.121`.
+If you don't have an SSH key, use [this tutorial](https://confluence.atlassian.com/bitbucketserver/creating-ssh-keys-776639788.html). You will also need the External IP of your server, available on that page. Mine is `104.154.97.121`.
 
 ## Let's run BERT on our new TPU!
 
