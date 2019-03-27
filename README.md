@@ -21,11 +21,6 @@ This is the associated code for Rowan's TPU tutorial. This is a limited version 
     gcloud auth application-default login
     ```
     (If you are on a remote server, use `gcloud auth application-default login --no-launch-browser`)
-6. Visit [the cloud storage page](https://console.cloud.google.com/storage/browser) and make a cloud storage bucket in the `us-central1` region. I named mine `tpututorial`. We'll also need to fix the permissions on this storage bucket. Grab the project number from the main google cloud console (mine is `335436385550`) and edit the permissions (right hand side). Add 
-    ```
-    service-[PROJECT_NUMBER]@cloud-tpu.iam.gserviceaccount.com
-    ```
-    to both the `Storage Legacy Writer` and `Storage Legacy Reader` groups.
     
 ## Let's create our first TPU!
 Finally done with setup! We're now ready to get started. The command that you want is:
@@ -35,11 +30,19 @@ ctpu up --name $(hostname) --tpu-size=v2-8 --preemptible --tf-version '1.12'
 (replace `$(hostname)` with something better)
 This will create a virtual machine, and an associated TPU. We're using one of the older (more stable) TPUs. There are also additional TPU options if we wanted more compute. The `--preemptible` flag means that your TPU might get suddenly killed by Google. These TPUs are much cheaper though!
 
+(If you run into errors with the above command [try following these steps](https://stackoverflow.com/questions/37798431/error-creating-vm-instance-in-google-compute-engine).)
+
 At any time, you can look at the status of your VM and TPUs by going to the [VM instances](https://console.cloud.google.com/compute/instances) or [TPUs](https://console.cloud.google.com/compute/tpus) page.
 
 There's one more thing you'll need to do. Look at the[VM instance](https://console.cloud.google.com/compute/instances) you created and add your SSH key into `SSH Keys` there. You can get your SSH key by running `cat ~/.ssh/id_rsa.pub`.
 
 If you don't have an SSH key, use [this tutorial](https://confluence.atlassian.com/bitbucketserver/creating-ssh-keys-776639788.html). You will also need the External IP of your server, available on that page. Mine is `104.154.97.121`.
+
+LAST, we need to create a cloud storage bucket. Visit [the cloud storage page](https://console.cloud.google.com/storage/browser) and make a cloud storage bucket in the `us-central1` region. I named mine `tpututorial`. We'll also need to fix the permissions on this storage bucket. Grab the project number from the main google cloud console (mine is `335436385550`) and edit the permissions (right hand side). Add 
+    ```
+    service-[PROJECT_NUMBER]@cloud-tpu.iam.gserviceaccount.com
+    ```
+    to both the `Storage Legacy Writer` and `Storage Legacy Reader` groups.
 
 ## Let's run BERT on our new TPU!
 
